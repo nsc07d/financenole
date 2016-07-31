@@ -5,30 +5,20 @@
 <br>
 <form style="text-align:center;" method = "post", action="{{ url_for('template')}}">
     <h3>Who are you?</h3>
-    <input type="text" name="firstname" value="First Name">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="lastname" value="Last Name">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="email" value="Email">
-    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="firstname" placeholder="First Name"><br><br>
+    <input type="text" name="lastname" placeholder="Last Name"><br><br>
+    <input type="text" name="email" placeholder="Email"><br><br>
 
-    <h3>Tell us about your expenses</h3>
-    <input type="text" name="gmi" value="Gross Monthly Income">
-    <label for="gmi">Utilities:</label><br><br>
-    <input type="text" name="rent" value="Rent">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="util" value="Utilities">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="transport" value="Transportation">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="insurance" value="Insurance">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="loans" value="Loans">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="misc" value="Miscellaneous">
-    <label for="util">Utilities:</label><br><br>
-    <input type="text" name="tuition" value="Tuition">
-    <label for="util">Utilities:</label><br><br>
+    <h3>Tell us about your debt and bills</h3>
+    <input type="text" name="gmi" placeholder="Gross Monthly Income"><br><br>
+    <input type="text" name="rent" placeholder="Rent"><br><br>
+    <input type="text" name="util" placeholder="Utilities"><br><br>
+    <input type="text" name="transport" placeholder="Transportation"><br><br>
+    <input type="text" name="insurance" placeholder="Insurance"><br><br>
+    <input type="text" name="loans" placeholder="Loans"><br><br>
+    <input type="text" name="misc" placeholder="Miscellaneous"><br><br>
+    <input type="text" name="tuition" placeholder="Tuition"><br><br>
+    <label for="ef">Emergency Fund:</label><br><br>
     <input type="radio" name="ef" value="Yes"> Yes
     <input type="radio" name="ef" value="No" checked> No<br>
 
@@ -39,5 +29,3 @@
 </form>
 <h3> This is the end of my child template</h3>
 {% endblock %}
-
-<label for="util">Utilities:</label>
