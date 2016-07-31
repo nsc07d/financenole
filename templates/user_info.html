@@ -1,0 +1,43 @@
+{% extends "layout1.html" %}
+{% block content %}
+<br xmlns="http://www.w3.org/1999/html">
+<h3>Please enter in your information</h3>
+<br>
+<form style="text-align:center;" method = "post", action="{{ url_for('template')}}">
+    <h3>Who are you?</h3>
+    <input type="text" name="firstname" value="First Name">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="lastname" value="Last Name">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="email" value="Email">
+    <label for="util">Utilities:</label><br><br>
+
+    <h3>Tell us about your expenses</h3>
+    <input type="text" name="gmi" value="Gross Monthly Income">
+    <label for="gmi">Utilities:</label><br><br>
+    <input type="text" name="rent" value="Rent">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="util" value="Utilities">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="transport" value="Transportation">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="insurance" value="Insurance">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="loans" value="Loans">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="misc" value="Miscellaneous">
+    <label for="util">Utilities:</label><br><br>
+    <input type="text" name="tuition" value="Tuition">
+    <label for="util">Utilities:</label><br><br>
+    <input type="radio" name="ef" value="Yes"> Yes
+    <input type="radio" name="ef" value="No" checked> No<br>
+
+    <label for="c401K">Company Sponsored 401K?</label>
+    <input type="radio" name="c401K" value="Yes"> Yes
+    <input type="radio" name="c401K" value="No" checked> No<br>
+    <input type="submit" />
+</form>
+<h3> This is the end of my child template</h3>
+{% endblock %}
+
+<label for="util">Utilities:</label>

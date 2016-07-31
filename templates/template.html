@@ -1,0 +1,38 @@
+{% extends "layout1.html" %}
+{% block content %}
+<div class="inside_main" style="padding-left:10%;padding-right:10%;">
+    <br>
+    <h3> Hi {{firstname}}</h3>
+    <h3> Here is what we learned from you</h3>
+    <br>
+    <div class="container">
+        <div class="progress">
+            {% if ef == u'Yes' %}
+                <h4 style="text-align:left">You have an emergency fund! GREAT!</h4>
+                <div class ="ef" data-role="collapsible">
+                    <h1>.....</h1>
+                    <p>An emergency fund is a great way to ofset any pitfalls that
+                    often arise at a moments notice. Whether its a car malfunction,
+                    medical bill, or loss of job having a safety net can save you a lot
+                    of time and stress. If you have a steady income an emergency fund of
+                    3 to 6 months is usually acceptable. If your income varies a larger
+                    fund might be better. These types of funds are best kept in a checking/
+                    savings account at your local bank. These can be quickly liquidated
+                    in case the need for the funds arise.</p>
+                </div>
+            {% endif %}
+            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                 aria-valuemax="100" style="width:{{ status }}%">
+                <span class="sr-only">70% Complete</span>
+            </div>
+        </div>
+    </div>
+    <p>My email: {{email}}</p>
+    <p>Emergency Fund?: {{ef}} </p>
+    <p>Company 401K?: {{c401K}} </p>
+    <p>Gross Monthly Income: {{gmi}}</p>
+    <p>Rent: {{rent}}</p>
+    <p>Utilities: {{util}}</p>
+
+</div>
+{% endblock %}
