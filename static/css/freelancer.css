@@ -457,3 +457,17 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+div.toggler { font-c:#782F40;
+              cursor:pointer;  }
+
+div.toggler h3{ color:#782F40;}
+
+div.toggler h3 button:hover{ background:#CEB888;}
+
+
+div.toggler h3 button.glyphicon-ok:hover{ color:greenyellow;}
+div.toggler h3 button.glyphicon-remove:hover{ color:#ff0000;}
+div.toggler div { display:none; }
+
+.active{}
