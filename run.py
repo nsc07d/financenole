@@ -29,11 +29,11 @@ def template():
     rent = request.form['rent']
     util = request.form['util']
     if ef == u'Yes':
-        progress_bar += 30
+        progress_bar += 37
     if c401K == u'Yes':
-        progress_bar += 30
+        progress_bar += 37
 
-    return render_template('template.html', firstname=firstname, lastname=lastname, email=email,ef=ef, gmi=gmi, c401K=c401K, rent=rent, util=util, status=progress_bar)
+    return render_template('template.html', firstname=firstname, lastname=lastname, email=email,ef=ef, gmi=gmi, c401K=c401K, rent=rent, util=util, progress_bar=progress_bar)
 
 
 if __name__ == '__main__':
