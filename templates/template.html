@@ -1,38 +1,102 @@
 {% extends "layout1.html" %}
 {% block content %}
 <div class="inside_main" style="padding-left:10%;padding-right:10%;">
+<script>$(function() {
+    $('.toggler').click(function() {
+        $(this).find('div').slideToggle();
+    });
+});</script>
     <br>
     <h3> Hi {{firstname}}</h3>
-    <h3> Here is what we learned from you</h3>
+    <h3>Here's what we can tell you</h3>
     <br>
     <div class="container">
-        <div class="progress">
-            {% if ef == u'Yes' %}
-                <h4 style="text-align:left">You have an emergency fund! GREAT!</h4>
-                <div class ="ef" data-role="collapsible">
-                    <h1>.....</h1>
-                    <p>An emergency fund is a great way to ofset any pitfalls that
-                    often arise at a moments notice. Whether its a car malfunction,
-                    medical bill, or loss of job having a safety net can save you a lot
-                    of time and stress. If you have a steady income an emergency fund of
-                    3 to 6 months is usually acceptable. If your income varies a larger
-                    fund might be better. These types of funds are best kept in a checking/
-                    savings account at your local bank. These can be quickly liquidated
-                    in case the need for the funds arise.</p>
-                </div>
+        <div class="progress" style="height:40px">
+            {% if progress_bar >= 90 %}
+                {% set label = "progress-bar-success" %}
+            {% elif progress_bar >= 80 %}
+                {% set label = "progress-bar-warning" %}
+            {% elif progress_bar >= 70 %}
+                {% set label = "progress-bar-warning" %}
+            {% else %}
+                {% set label = "progress-bar-danger" %}
             {% endif %}
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                 aria-valuemax="100" style="width:{{ status }}%">
-                <span class="sr-only">70% Complete</span>
+            <div class="progress-bar {{label}} progress-bar-striped active" role="progressbar"
+                 aria-valuenow="{{ progress_bar }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progress_bar }}%; line-height:40px; font-size:22px">
+                {{ progress_bar }}%
             </div>
+    </div>
+    <div class="toggler">
+        <h3 style="text-align:left;padding-left:15%;">Budget/Reduce/Set Goals:  <button type="button" class="glyphicon glyphicon-usd" style=""></button></h3>
+        <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" >
+           The very first thing you do after you've been offered a job or are beginning to manage your finances more is budget. Budgeting
+            allows you to see what and where exactly your money is going. You'll never realize you spent $250 on fast-food last month
+            until you budget or your card gets declined and $50 of overdraft fees are applied to your account. While budgeting helps with reducing excess
+            it also allows you to set reasonable goals. It makes clear to you that you can't afford that new computer/car/russian bride. Budgeting
+            also helps to make sure you're correctly saving for retirement!
         </div>
     </div>
-    <p>My email: {{email}}</p>
-    <p>Emergency Fund?: {{ef}} </p>
-    <p>Company 401K?: {{c401K}} </p>
+    {% if ef == 'Yes' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" > You've indicated that you have an emergency fund. This is great! There are a lot
+            of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
+            is with money set aside for such emergencies.
+
+            It is often recommended that, for those with a steady income, 3 - 6 months worth of salary be set aside.
+            For those with less reliable income it might be wise to increase that to 6 - 9 months.</div>
+        </div>
+    {% elif ef == 'No' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" >
+            You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
+                Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
+                you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
+                before paying off debts or credit cards or even retirement is making sure that you have
+                an adequate, liquid supply of money that can hold you over until things smooth out. 3 - 6 months
+                salary is a good, reasonable safety net for most people. If your income isn't as predictable and
+                varies it might be better to bump it up and 6 - 9 months. For the love of god start accumulating
+                a safety net!
+            </div>
+        </div>
+    {% endif %}
+    {% if c401K == 'Yes' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" > You've indicated that you have an emergency fund. This is great! There are a lot
+                of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
+                is with money set aside for such emergencies.
+
+                It is often recommended that, for those with a steady income, 3 - 6 months worth of salary be set aside.
+                For those with less reliable income it might be wise to increase that to 6 - 9 months.</div>
+        </div>
+    {% elif c401K == 'No' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" >
+                You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
+                Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
+                you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
+                before paying off debts or credit cards or even retirement is making sure that you have
+                an adequate, liquid supply of money that can hold you over until things smooth out. 3 - 6 months
+                salary is a good, reasonable safety net for most people. If your income isn't as predictable and
+                varies it might be better to bump it up and 6 - 9 months. For the love of god start accumulating
+                a safety net!
+            </div>
+        </div>
+    {% endif %}
+
     <p>Gross Monthly Income: {{gmi}}</p>
     <p>Rent: {{rent}}</p>
     <p>Utilities: {{util}}</p>
-
+    <p>May we email you at {{email}} with our findings and recommendations? <button class="btn-primary btn-sm" style="background:#782F40">Yes please!</button> </p>
 </div>
 {% endblock %}
+
+
