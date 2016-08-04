@@ -34,10 +34,11 @@
             border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black">
                The above progress bar is just a simple indication of how you're doing. If your percentage isn't that great
                 it's not something to get worried and up in arms about yet. Some of these opportunities may have not presented
-                themselves just yet. You'll learn way to increase your percentage in the notes below!
+                themselves just yet. You'll learn way to increase your percentage in the notes below! The below are structured in
+                an order of importance. The most important, budgeting/goals will always be up top and the most important.
+                The order will reveal itself based on the input you gave us.
             </div>
 
-            </div>
         </div>
     <div class="toggler">
         <h3 style="text-align:left;padding-left:15%;">Budget/Reduce/Set Goals:  <button type="button" class="glyphicon glyphicon-usd" style=""></button></h3>
@@ -104,9 +105,85 @@
             </div>
         </div>
     {% endif %}
+    {% if apr >= '6' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
+                You've indicated that you have a loan that has a rate of {{ apr }}%. This is the next thing that
+                you need to tackle. Every month that you have to continue to pay off just interest rate is money quite literally
+                going the toilet. The quicker you can pay this off the better.<br><br>
 
-    <p>More calculations to come!</p>
-    <p>May we email you at {{email}} with our findings and recommendations? <button class="btn-primary btn-sm" style="background:#782F40">Yes please!</button> </p>
+                There are two ways to pay off this debt.
+                <ul>
+                    <li>The <strong>Avalance</strong> method, debts are paid down in order of interest rate, starting with
+                        the debt that carries the highest interest rate. This is the financially optimal method of paying down debt,
+                        and you will pay less money overall compared to the snowball method.
+                    </li><br>
+                    <li>The <strong>Snowball</strong> method, popularized by Dave Ramsey, debts are paid down in order of balance size,
+                        starting with the smallest. Paying off small debts first may give you a psychological boost and improve one's
+                        cash flow situation, as paid off debts free up minimum payments. The downside is that larger loans
+                        (that may be at higher interest rates) are left untouched for longer, costing more in the long run.
+                    </li>
+                </ul><br><br>
+
+                These methods are the best way to go about reducing your large. If you continue to have problems
+                please consult a professional, licensed financial planner</p>
+
+                Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
+                The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
+                at, usually, higher rates than your debts.
+
+            </div>
+        </div>
+    {% elif apr >= '4'  and apr < '7' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid yellow; border-right:1px solid yellow; border-bottom:1px solid yellow" >
+                You've indicated that you have a loan that has a rate of {{ apr }}%. While this interest rate is
+                better than anything greater than 7% it's still up there in the category of 'needs to be taken care of'.
+                After you've put money into your 401K the next place to put money into is this.<br><br>
+
+                Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
+                The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
+                at, usually, higher rates than your debts.
+
+            </div>
+        </div>
+    {% elif apr < '4' %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
+                You've indicated that you have a loan that has a rate of {{ apr }}%. If this is your highest interest rate
+                you're doing great! Reducing debt is one of the harder parts of maintaining finances and having debt with low
+                interest makes it easier on your wallet but continued payment also increases your credit score.
+                You still want to pay this off. It's not beneficial to keep debt longer than you can afford to pay it.<br><br>
+
+                Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
+                The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
+                at, usually, higher rates than your debts.
+
+            </div>
+        </div>
+    {% endif %}
+    {% if (apr < '4') and (ef == 'Yes') and (c401K == 'Yes') %}
+        <div class="toggler">
+            <h3 style="text-align:left;padding-left:15%;">Saving with a Roth IRA:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
+                Excellent it looks like you're on your way to financial security! Having a 401k, emergency fund, and little debt will
+                go a long way in making sure that you're money is going into places that will net you the greatest return. If you've
+                gotten to the point of fully matching your companies 401K then your next best bet is to put your money into an
+                IRAs that wll benefit you. If you would like to learn more please see <a href="https://www.fidelity.com/retirement-ira/ira-rules-faq">here for more info.</a>
+
+            </div>
+        </div>
+    {% endif %}
+
+
+
 </div>
 {% endblock %}
 
