@@ -25,7 +25,20 @@
                  aria-valuenow="{{ progress_bar }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progress_bar }}%; line-height:40px; font-size:22px">
                 {{ progress_bar }}%
             </div>
+
     </div>
+        <p style="font-size:8px;text-align:left;margin-top:-15px;padding-top:0">Results may vary</p>
+        <div class="toggler">
+            <button type="button" class="btn-info glyphicon">+</button>
+            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black">
+               The above progress bar is just a simple indication of how you're doing. If your percentage isn't that great
+                it's not something to get worried and up in arms about yet. Some of these opportunities may have not presented
+                themselves just yet. You'll learn way to increase your percentage in the notes below!
+            </div>
+
+            </div>
+        </div>
     <div class="toggler">
         <h3 style="text-align:left;padding-left:15%;">Budget/Reduce/Set Goals:  <button type="button" class="glyphicon glyphicon-usd" style=""></button></h3>
         <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
@@ -41,7 +54,7 @@
         <div class="toggler">
             <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
             <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" > You've indicated that you have an emergency fund. This is great! There are a lot
+            border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" > You've indicated that you have an emergency fund. This is great! There are a lot
             of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
             is with money set aside for such emergencies.
 
@@ -52,7 +65,7 @@
         <div class="toggler">
             <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
             <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" >
+                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
             You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
                 Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
                 you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
@@ -79,7 +92,7 @@
         <div class="toggler">
             <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
             <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" >
+                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
                 You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
                 Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
                 you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
@@ -92,9 +105,7 @@
         </div>
     {% endif %}
 
-    <p>Gross Monthly Income: {{gmi}}</p>
-    <p>Rent: {{rent}}</p>
-    <p>Utilities: {{util}}</p>
+    <p>More calculations to come!</p>
     <p>May we email you at {{email}} with our findings and recommendations? <button class="btn-primary btn-sm" style="background:#782F40">Yes please!</button> </p>
 </div>
 {% endblock %}
