@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def template_test():
-    return render_template('index.html', my_string="Wheeeee!", my_list=[0, 1, 2, 3, 4, 5])
+    return render_template('index.html')
 
 
 @app.route("/login")
