@@ -31,6 +31,21 @@ def template():
     c401K = request.form['c401K']
     rent = request.form['rent']
     apr = request.form['apr']
+    
+    util = request.form['util']
+    transport = request.form["transport"]
+    insurance = request.form["insurance"]
+    loans = request.form["loans"]
+    misc = request.form["misc"]
+    tuition = request.form["tuition"]
+    try:
+        total = int(rent)+int(util)+int(transport)+int(insurance)+int(loans)+int(misc)+int(tuition)
+        totleft = float(gmi) - int(total)
+    except:
+        total = 0
+        totleft = 0
+        
+    
     if apr > 7:
         progress_bar +=5
     elif apr > 5:
@@ -66,7 +81,7 @@ def template():
     mailserver.quit()
 
 
-    return render_template('template.html', firstname=firstname, lastname=lastname, email=email,ef=ef, gmi=gmi, c401K=c401K, rent=rent, util=util, progress_bar=progress_bar, apr=apr)
+    return render_template('template.html', firstname=firstname, lastname=lastname, email=email,ef=ef, gmi=gmi, c401K=c401K, rent=rent, util=util, transport=transport, insurance=insurance, loans=loans, misc=misc, tuition=tuition, total=total, totleft=totleft, progress_bar=progress_bar, apr=apr)
 
 
 if __name__ == '__main__':
