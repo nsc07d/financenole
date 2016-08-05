@@ -181,10 +181,81 @@
             </div>
         </div>
     {% endif %}
+    
+    <style>
+    table,th,td,tr{border: 1px solid black;}
+    th {text-align: center;
+        background-color:#862633;
+        color: white;
+        padding: 15px;}
+    td {padding: 15px;}
+    tr:nth-child(even){background-color:#E7C779}
+    </style>
+    
+    <table style = "width:100%">
+        <tr>
+            <th><p>Category:</p></th>
+            <th><p>Amount:</p></th>
+            <th><p>Average:</p></th>
+        </tr>
+        <tr>
+            <td>Gross Monthly Income</td>
+            <td>${{gmi}}</td>
+            <td>$1,200 (<a target="_blank" href="http://ehow.com/info_7934153_average-college-students-income.html">College Student</a>)</td>
+        </tr>
+        <tr>
+            <td>Rent:</td>
+            <td>${{rent}}</td>
+            <td>$650 1 Br/Bath (<a target="_blank" href="http://housing.fsu.edu">FSU Housing</a>)</td>
+        </tr>
+        <tr>
+            <td>Utilities:</td>
+            <td>${{util}}</td>
+            <td>$167.45 (<a target="_blank" href="https://numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=Tallahassee%2C+FL">Water/Electricity/Garbage</a>)</td>
+        </tr>
+        <tr>
+            <td>Transport:</td>
+            <td>${{transport}}</td>
+            <td>$15 (<a target="_blank" href="https://washingtonpost.com/news/wonk/wp/2013/12/13/cars-in-the-u-s-are-more-fuel-efficient-than-ever-heres-how-it-happened/">Living within 3 mile radius</a>)</td>
+        </tr>
+        <tr>
+            <td>Insurance:</td>
+            <td>${{insurance}}</td>
+            <td>$204 (<a target="_blank" href="https://coverhound.com">College student insurance</a>)</td>
+        </tr>
+        <tr>
+            <td>Loans:</td>
+            <td>${{loans}}</td>
+            <td>$458.33 (<a target="_blank" href="https://petersons.com/college-search/college-loan-borrowing-questions.aspx">Upper-level student</a>)</td>
+        </tr>
+        <tr>
+            <td>Misc:</td>
+            <td>${{misc}}</td>
+            <td>$300 (<a target="_blank" href="http://loweryourspending.com/average-cost-for-food-per-month-for-one-person.html">Groceries</a>)</td>
+        </tr>
+        <tr>
+            <td>Tuition:</td>
+            <td>${{tuition}}</td>
+            <td>$313.50 (<a target="_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_info.htm">FSU Financial's</a>)</td>
+        </tr>
+        <tr>
+            <td>Tuition:</td>
+            <td>${{tuition}}</td>
+            <td>$313.50 (<a target="_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_info.htm">FSU Financial's</a>)</td>
+        </tr>
+        <tr>
+            <td><strong>Total Monthly Expenses:</strong></td>
+            <td>${{total}} *</td>
+            <td>$1924.5</td>
+        </tr>
+        <tr>
+            <td><strong>Personal Remaining:</strong></td>
+            <td>${{totleft}}</td>
+            <td></td>
+        </tr>
+    </table>
 
-
-
+    <p>* If your personal remaining is below 0, you are spending more than you are making!</p>
+    
 </div>
 {% endblock %}
-
-
