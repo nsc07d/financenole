@@ -1,261 +1,271 @@
 {% extends "layout1.html" %}
 {% block content %}
-<div class="inside_main" style="padding-left:10%;padding-right:10%;">
-<script>$(function() {
-    $('.toggler').click(function() {
-        $(this).find('div').slideToggle();
-    });
-});</script>
-    <br>
-    <h3> Hi {{firstname}}</h3>
-    <h3>Here's what we can tell you</h3>
-    <br>
-    <div class="container">
-        <div class="progress" style="height:40px">
-            {% if progress_bar >= 90 %}
-                {% set label = "progress-bar-success" %}
-            {% elif progress_bar >= 80 %}
-                {% set label = "progress-bar-warning" %}
-            {% elif progress_bar >= 70 %}
-                {% set label = "progress-bar-warning" %}
-            {% else %}
-                {% set label = "progress-bar-danger" %}
-            {% endif %}
-            <div class="progress-bar {{label}} progress-bar-striped active" role="progressbar"
-                 aria-valuenow="{{ progress_bar }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progress_bar }}%; line-height:40px; font-size:22px">
-                {{ progress_bar }}%
-            </div>
+    <div class="inside_main" style="padding-left:10%;padding-right:10%; height:100%;">
+        <script>$(function() {
+            $('.toggler').click(function() {
+                $(this).find('div').slideToggle();
+            });
+        });</script>
+        <br>
+        <h3> Hi {{firstname}}</h3>
+        <h3>Here's what we can tell you</h3>
+        <br>
+        <div class="container">
+            <div class="progress" style="height:40px">
+                {% if progress_bar >= 90 %}
+                    {% set label = "progress-bar-success" %}
+                {% elif progress_bar >= 80 %}
+                    {% set label = "progress-bar-warning" %}
+                {% elif progress_bar >= 70 %}
+                    {% set label = "progress-bar-warning" %}
+                {% else %}
+                    {% set label = "progress-bar-danger" %}
+                {% endif %}
+                <div class="progress-bar {{label}} progress-bar-striped active" role="progressbar"
+                     aria-valuenow="{{ progress_bar }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ progress_bar }}%; line-height:40px; font-size:22px">
+                    {{ progress_bar }}%
+                </div>
 
-    </div>
-        <p style="font-size:8px;text-align:left;margin-top:-15px;padding-top:0">Results may vary</p>
-        <div class="toggler">
-            <button type="button" class="btn-info glyphicon">+</button>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            </div>
+            <p style="font-size:8px;text-align:left;margin-top:-15px;padding-top:0">Results may vary</p>
+            <div class="toggler">
+                <button type="button" class="btn-info glyphicon">+</button>
+                <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
             border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black">
-               The above progress bar is just a simple indication of how you're doing. If your percentage isn't that great
-                it's not something to get worried and up in arms about yet. Some of these opportunities may have not presented
-                themselves just yet. You'll learn way to increase your percentage in the notes below! The below are structured in
-                an order of importance. The most important, budgeting/goals will always be up top and the most important.
-                The order will reveal itself based on the input you gave us.
-            </div>
+                    The above progress bar is just a simple indication of how you're doing. If your percentage isn't that great
+                    it's not something to get worried and up in arms about yet. Some of these opportunities may have not presented
+                    themselves just yet. You'll learn way to increase your percentage in the notes below! The below are structured in
+                    an order of importance. The most important, budgeting/goals will always be up top and the most important.
+                    The order will reveal itself based on the input you gave us.
+                </div>
 
-        </div>
-    <div class="toggler">
-        <h3 style="text-align:left;padding-left:15%;">Budget/Reduce/Set Goals:  <button type="button" class="glyphicon glyphicon-usd" style=""></button></h3>
-        <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            </div>
+            <div class="toggler">
+                <h3 style="text-align:left;padding-left:15%;">Budget/Reduce/Set Goals:  <button type="button" class="glyphicon glyphicon-usd" style=""></button></h3>
+                <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
             border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" >
-           The very first thing you do after you've been offered a job or are beginning to manage your finances more is budget. Budgeting
-            allows you to see what and where exactly your money is going. You'll never realize you spent $250 on fast-food last month
-            until you budget or your card gets declined and $50 of overdraft fees are applied to your account. While budgeting helps with reducing excess
-            it also allows you to set reasonable goals. It makes clear to you that you can't afford that new computer/car/russian bride. Budgeting
-            also helps to make sure you're correctly saving for retirement!
+                    The very first thing you do after you've been offered a job or are beginning to manage your finances more is budget. Budgeting
+                    allows you to see what and where exactly your money is going. You'll never realize you spent $250 on fast-food last month
+                    until you budget or your card gets declined and $50 of overdraft fees are applied to your account. While budgeting helps with reducing excess
+                    it also allows you to set reasonable goals. It makes clear to you that you can't afford that new computer/car/russian bride. Budgeting
+                    also helps to make sure you're correctly saving for retirement!
+                </div>
+            </div>
+            {% if ef == 'Yes' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" > You've indicated that you have an emergency fund. This is great! There are a lot
+                        of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
+                        is with money set aside for such emergencies.
+
+                        It is often recommended that, for those with a steady income, 3 - 6 months worth of salary be set aside.
+                        For those with less reliable income it might be wise to increase that to 6 - 9 months.</div>
+                </div>
+            {% elif ef == 'No' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
+                        You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
+                        Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
+                        you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
+                        before paying off debts or credit cards or even retirement is making sure that you have
+                        an adequate, liquid supply of money that can hold you over until things smooth out. 3 - 6 months
+                        salary is a good, reasonable safety net for most people. If your income isn't as predictable and
+                        varies it might be better to bump it up and 6 - 9 months. For the love of god start accumulating
+                        a safety net!
+                    </div>
+                </div>
+            {% endif %}
+            {% if (c401K == 'Yes') %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" > You've indicated that you have an emergency fund. This is great! There are a lot
+                        of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
+                        is with money set aside for such emergencies.
+
+                        It is often recommended that, for those with a steady income, 3 - 6 months worth of salary be set aside.
+                        For those with less reliable income it might be wise to increase that to 6 - 9 months.</div>
+                </div>
+            {% elif c401K == 'No' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
+                        The next step that you take after you have an emergency fund set up is to make sure that you're taking
+                        advantage of any matching 401k funds your company provides if available. It's important to put any money that you can into
+                        these kind of investments because it's a guaranteed return on your money and risk-free (you don't find this
+                        out in the investment world). Even putting a little money in every month will make saving for retirement
+                        a lot easier.
+                    </div>
+                </div>
+            {% endif %}
+            {% if apr >= '6' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
+                        You've indicated that you have a loan that has a rate of {{ apr }}%. This is the next thing that
+                        you need to tackle. Every month that you have to continue to pay off just interest rate is money quite literally
+                        going the toilet. The quicker you can pay this off the better.<br><br>
+
+                        There are two ways to pay off this debt.
+                        <ul>
+                            <li>The <strong>Avalance</strong> method, debts are paid down in order of interest rate, starting with
+                                the debt that carries the highest interest rate. This is the financially optimal method of paying down debt,
+                                and you will pay less money overall compared to the snowball method.
+                            </li><br>
+                            <li>The <strong>Snowball</strong> method, popularized by Dave Ramsey, debts are paid down in order of balance size,
+                                starting with the smallest. Paying off small debts first may give you a psychological boost and improve one's
+                                cash flow situation, as paid off debts free up minimum payments. The downside is that larger loans
+                                (that may be at higher interest rates) are left untouched for longer, costing more in the long run.
+                            </li>
+                        </ul><br><br>
+
+                        These methods are the best way to go about reducing your large. If you continue to have problems
+                        please consult a professional, licensed financial planner</p>
+
+                        Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
+                        The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
+                        at, usually, higher rates than your debts.
+
+                    </div>
+                </div>
+            {% elif apr >= '4'  and apr < '7' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid yellow; border-right:1px solid yellow; border-bottom:1px solid yellow" >
+                        You've indicated that you have a loan that has a rate of {{ apr }}%. While this interest rate is
+                        better than anything greater than 7% it's still up there in the category of 'needs to be taken care of'.
+                        After you've put money into your 401K the next place to put money into is this.<br><br>
+
+                        Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
+                        The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
+                        at, usually, higher rates than your debts.
+
+                    </div>
+                </div>
+            {% elif apr < '4' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
+                        You've indicated that you have a loan that has a rate of {{ apr }}%. If this is your highest interest rate
+                        you're doing great! Reducing debt is one of the harder parts of maintaining finances and having debt with low
+                        interest makes it easier on your wallet but continued payment also increases your credit score.
+                        You still want to pay this off. It's not beneficial to keep debt longer than you can afford to pay it.<br><br>
+
+                        Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
+                        The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
+                        at, usually, higher rates than your debts.
+
+                    </div>
+                </div>
+            {% endif %}
+            {% if (apr < '4') and (ef == 'Yes') and (c401K == 'Yes') %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">Saving with a Roth IRA:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
+                        Excellent it looks like you're on your way to financial security! Having a 401k, emergency fund, and little debt will
+                        go a long way in making sure that you're money is going into places that will net you the greatest return. If you've
+                        gotten to the point of fully matching your companies 401K then your next best bet is to put your money into an
+                        IRAs that wll benefit you. If you would like to learn more please see <a href="https://www.fidelity.com/retirement-ira/ira-rules-faq">here for more info.</a>
+
+                    </div>
+                </div>
+            {% endif %}
+        <br><br>
+        <h3> Here's what you gave us</h3>
+
+            <style>
+                table,th,td,tr{border-top: 1px solid black; border-bottom: 1px solid black; margin-left:10%;}
+                th {text-align: center;
+                    background-color:#862633;
+                    color: white;
+                    padding: 15px;}
+                td {padding: 15px;}
+                tr:nth-child(even){background-color:#E7C779}
+            </style>
+
+            <table style = "width:80%">
+                <tr>
+                    <th><p>Category:</p></th>
+                    <th><p>Amount:</p></th>
+                    <th><p>Average:</p></th>
+                </tr>
+                <tr>
+                    <td>Gross Monthly Income</td>
+                    <td>${{gmi}}</td>
+                    <td>$1,200 (<a target="_blank" href="http://ehow.com/info_7934153_average-college-students-income.html">College Student</a>)</td>
+                </tr>
+                <tr>
+                    <td>Rent:</td>
+                    <td>${{rent}}</td>
+                    <td>$650 1 Br/Bath (<a target="_blank" href="http://housing.fsu.edu">FSU Housing</a>)</td>
+                </tr>
+                <tr>
+                    <td>Utilities:</td>
+                    <td>${{util}}</td>
+                    <td>$167.45 (<a target="_blank" href="https://numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=Tallahassee%2C+FL">Water/Electricity/Garbage</a>)</td>
+                </tr>
+                <tr>
+                    <td>Transport:</td>
+                    <td>${{transport}}</td>
+                    <td>$15 (<a target="_blank" href="https://washingtonpost.com/news/wonk/wp/2013/12/13/cars-in-the-u-s-are-more-fuel-efficient-than-ever-heres-how-it-happened/">Living within 3 mile radius</a>)</td>
+                </tr>
+                <tr>
+                    <td>Insurance:</td>
+                    <td>${{insurance}}</td>
+                    <td>$204 (<a target="_blank" href="https://coverhound.com">College student insurance</a>)</td>
+                </tr>
+                <tr>
+                    <td>Loans:</td>
+                    <td>${{loans}}</td>
+                    <td>$458.33 (<a target="_blank" href="https://petersons.com/college-search/college-loan-borrowing-questions.aspx">Upper-level student</a>)</td>
+                </tr>
+                <tr>
+                    <td>Misc:</td>
+                    <td>${{misc}}</td>
+                    <td>$300 (<a target="_blank" href="http://loweryourspending.com/average-cost-for-food-per-month-for-one-person.html">Groceries</a>)</td>
+                </tr>
+                <tr>
+                    <td>Tuition:</td>
+                    <td>${{tuition}}</td>
+                    <td>$313.50 (<a target="_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_info.htm">FSU Financial's</a>)</td>
+                </tr>
+                <tr>
+                    <td>Tuition:</td>
+                    <td>${{tuition}}</td>
+                    <td>$313.50 (<a target="_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_info.htm">FSU Financial's</a>)</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Monthly Expenses:</strong></td>
+                    <td>${{total}} *</td>
+                    <td>$1924.5</td>
+                </tr>
+                <tr>
+                    <td><strong>Personal Remaining:</strong></td>
+                    <td>${{totleft}}</td>
+                    <td></td>
+                </tr>
+                {% if totleft > '0' %}
+                <div class="toggler">
+                    <h3 style="text-align:left;padding-left:15%;">TL;DR (you should really really go and read) <button type="button" class="btn-btninfo glyphicon" style="">+</button></h3>
+                    <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
+                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
+                        test print
+
+                    </div>
+                </div>
+            {% endif %}
+            </table>
+            <p>* If your personal remaining is below 0, you are spending more than you are making!</p>
+
+
         </div>
     </div>
-    {% if ef == 'Yes' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-            border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" > You've indicated that you have an emergency fund. This is great! There are a lot
-            of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
-            is with money set aside for such emergencies.
-
-            It is often recommended that, for those with a steady income, 3 - 6 months worth of salary be set aside.
-            For those with less reliable income it might be wise to increase that to 6 - 9 months.</div>
-        </div>
-    {% elif ef == 'No' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Emergency Fund:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
-            You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
-                Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
-                you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
-                before paying off debts or credit cards or even retirement is making sure that you have
-                an adequate, liquid supply of money that can hold you over until things smooth out. 3 - 6 months
-                salary is a good, reasonable safety net for most people. If your income isn't as predictable and
-                varies it might be better to bump it up and 6 - 9 months. For the love of god start accumulating
-                a safety net!
-            </div>
-        </div>
-    {% endif %}
-    {% if c401K == 'Yes' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-            border-left:1px solid black; border-right:1px solid black; border-bottom:1px solid black" > You've indicated that you have an emergency fund. This is great! There are a lot
-                of circumstances where you may find yourself short on cash in a hurry. One of the best ways to negate this
-                is with money set aside for such emergencies.
-
-                It is often recommended that, for those with a steady income, 3 - 6 months worth of salary be set aside.
-                For those with less reliable income it might be wise to increase that to 6 - 9 months.</div>
-        </div>
-    {% elif c401K == 'No' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Company 401K:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
-                You've indicated that you don't have an established emergency fund. A study from the Princeton Survey
-                Research Associates recently concluded that 65% of Americans are one pay check away from financial ruin. The first thing
-                you should do is secure things for your survival things like housing, food, water, etc. The next thing you do,
-                before paying off debts or credit cards or even retirement is making sure that you have
-                an adequate, liquid supply of money that can hold you over until things smooth out. 3 - 6 months
-                salary is a good, reasonable safety net for most people. If your income isn't as predictable and
-                varies it might be better to bump it up and 6 - 9 months. For the love of god start accumulating
-                a safety net!
-            </div>
-        </div>
-    {% endif %}
-    {% if apr >= '6' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid red; border-right:1px solid red; border-bottom:1px solid red" >
-                You've indicated that you have a loan that has a rate of {{ apr }}%. This is the next thing that
-                you need to tackle. Every month that you have to continue to pay off just interest rate is money quite literally
-                going the toilet. The quicker you can pay this off the better.<br><br>
-
-                There are two ways to pay off this debt.
-                <ul>
-                    <li>The <strong>Avalance</strong> method, debts are paid down in order of interest rate, starting with
-                        the debt that carries the highest interest rate. This is the financially optimal method of paying down debt,
-                        and you will pay less money overall compared to the snowball method.
-                    </li><br>
-                    <li>The <strong>Snowball</strong> method, popularized by Dave Ramsey, debts are paid down in order of balance size,
-                        starting with the smallest. Paying off small debts first may give you a psychological boost and improve one's
-                        cash flow situation, as paid off debts free up minimum payments. The downside is that larger loans
-                        (that may be at higher interest rates) are left untouched for longer, costing more in the long run.
-                    </li>
-                </ul><br><br>
-
-                These methods are the best way to go about reducing your large. If you continue to have problems
-                please consult a professional, licensed financial planner</p>
-
-                Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
-                The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
-                at, usually, higher rates than your debts.
-
-            </div>
-        </div>
-    {% elif apr >= '4'  and apr < '7' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-remove" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid yellow; border-right:1px solid yellow; border-bottom:1px solid yellow" >
-                You've indicated that you have a loan that has a rate of {{ apr }}%. While this interest rate is
-                better than anything greater than 7% it's still up there in the category of 'needs to be taken care of'.
-                After you've put money into your 401K the next place to put money into is this.<br><br>
-
-                Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
-                The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
-                at, usually, higher rates than your debts.
-
-            </div>
-        </div>
-    {% elif apr < '4' %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Paying Off Loans:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
-                You've indicated that you have a loan that has a rate of {{ apr }}%. If this is your highest interest rate
-                you're doing great! Reducing debt is one of the harder parts of maintaining finances and having debt with low
-                interest makes it easier on your wallet but continued payment also increases your credit score.
-                You still want to pay this off. It's not beneficial to keep debt longer than you can afford to pay it.<br><br>
-
-                Note: You might have noticed that we have asked that you pay into a company 401k BEFORE paying off debt.
-                The reason for this is because putting money into a 401k is guaranteed, risk-free, return on your money
-                at, usually, higher rates than your debts.
-
-            </div>
-        </div>
-    {% endif %}
-    {% if (apr < '4') and (ef == 'Yes') and (c401K == 'Yes') %}
-        <div class="toggler">
-            <h3 style="text-align:left;padding-left:15%;">Saving with a Roth IRA:  <button type="button" class="glyphicon glyphicon-ok" style=""></button></h3>
-            <div class="collapse" style="margin-left:15%;margin-right:15%; padding:8px; font-size-adjust:1.5;background-color:#f3f0f4;
-                border-left:1px solid greenyellow; border-right:1px solid greenyellow; border-bottom:1px solid greenyellow" >
-                Excellent it looks like you're on your way to financial security! Having a 401k, emergency fund, and little debt will
-                go a long way in making sure that you're money is going into places that will net you the greatest return. If you've
-                gotten to the point of fully matching your companies 401K then your next best bet is to put your money into an
-                IRAs that wll benefit you. If you would like to learn more please see <a href="https://www.fidelity.com/retirement-ira/ira-rules-faq">here for more info.</a>
-
-            </div>
-        </div>
-    {% endif %}
-    
-    <style>
-    table,th,td,tr{border: 1px solid black;}
-    th {text-align: center;
-        background-color:#862633;
-        color: white;
-        padding: 15px;}
-    td {padding: 15px;}
-    tr:nth-child(even){background-color:#E7C779}
-    </style>
-    
-    <table style = "width:100%">
-        <tr>
-            <th><p>Category:</p></th>
-            <th><p>Amount:</p></th>
-            <th><p>Average:</p></th>
-        </tr>
-        <tr>
-            <td>Gross Monthly Income</td>
-            <td>${{gmi}}</td>
-            <td>$1,200 (<a target="_blank" href="http://ehow.com/info_7934153_average-college-students-income.html">College Student</a>)</td>
-        </tr>
-        <tr>
-            <td>Rent:</td>
-            <td>${{rent}}</td>
-            <td>$650 1 Br/Bath (<a target="_blank" href="http://housing.fsu.edu">FSU Housing</a>)</td>
-        </tr>
-        <tr>
-            <td>Utilities:</td>
-            <td>${{util}}</td>
-            <td>$167.45 (<a target="_blank" href="https://numbeo.com/cost-of-living/city_result.jsp?country=United+States&city=Tallahassee%2C+FL">Water/Electricity/Garbage</a>)</td>
-        </tr>
-        <tr>
-            <td>Transport:</td>
-            <td>${{transport}}</td>
-            <td>$15 (<a target="_blank" href="https://washingtonpost.com/news/wonk/wp/2013/12/13/cars-in-the-u-s-are-more-fuel-efficient-than-ever-heres-how-it-happened/">Living within 3 mile radius</a>)</td>
-        </tr>
-        <tr>
-            <td>Insurance:</td>
-            <td>${{insurance}}</td>
-            <td>$204 (<a target="_blank" href="https://coverhound.com">College student insurance</a>)</td>
-        </tr>
-        <tr>
-            <td>Loans:</td>
-            <td>${{loans}}</td>
-            <td>$458.33 (<a target="_blank" href="https://petersons.com/college-search/college-loan-borrowing-questions.aspx">Upper-level student</a>)</td>
-        </tr>
-        <tr>
-            <td>Misc:</td>
-            <td>${{misc}}</td>
-            <td>$300 (<a target="_blank" href="http://loweryourspending.com/average-cost-for-food-per-month-for-one-person.html">Groceries</a>)</td>
-        </tr>
-        <tr>
-            <td>Tuition:</td>
-            <td>${{tuition}}</td>
-            <td>$313.50 (<a target="_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_info.htm">FSU Financial's</a>)</td>
-        </tr>
-        <tr>
-            <td>Tuition:</td>
-            <td>${{tuition}}</td>
-            <td>$313.50 (<a target="_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_info.htm">FSU Financial's</a>)</td>
-        </tr>
-        <tr>
-            <td><strong>Total Monthly Expenses:</strong></td>
-            <td>${{total}} *</td>
-            <td>$1924.5</td>
-        </tr>
-        <tr>
-            <td><strong>Personal Remaining:</strong></td>
-            <td>${{totleft}}</td>
-            <td></td>
-        </tr>
-    </table>
-
-    <p>* If your personal remaining is below 0, you are spending more than you are making!</p>
-    
-</div>
 {% endblock %}
