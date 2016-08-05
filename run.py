@@ -2,44 +2,25 @@ from flask import Flask, render_template, request, url_for
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
+from string import Template
 
 app = Flask(__name__)
 
-"""Home page where the website welcomes the user
-along with an area below to provide contact information """
+
 @app.route("/")
 def template_test():
     return render_template('index.html')
 
-"""login page where user inputs all the necessary information 
-needed to return back the results. 'user_info.html' has the
-resources needed to store all user inputs for the results 
-page"""
+
 @app.route("/login")
 def user_info():
     return render_template('user_info.html')
-    
-"""General tips page where the user can inform themself
-of money-saving tips. 'tips.html' has stored inside all 
-this information regarding tips""" 
+
 @app.route("/tips")
 def tips():
     return render_template('tips.html')
 
-"""All these variables are storing the info
-inside the request forms to calculate total
-expenses along with the amount left available.
-apr,emf, and c401k will all affect the progress 
-bar and it's completion. Concerning the e-mail 
-delivery, the sections 'From'/'To'/'Subject' 
-are all filled in respectively from the website
-email along with the results to the e-mail the
-user has provided. It logs onto gmail server and sends
-email to the user with the table generated with
-their respective information. Lastly, it renders 
-the template with all the information needed to 
-generate the table to display on the website and 
-e-mail provided."""
+
 @app.route('/template', methods=['POST'])
 def template():
     progress_bar = 0
@@ -51,7 +32,7 @@ def template():
     c401K = request.form['c401K']
     rent = request.form['rent']
     apr = request.form['apr']
-    
+
     util = request.form['util']
     transport = request.form["transport"]
     insurance = request.form["insurance"]
@@ -64,8 +45,8 @@ def template():
     except:
         total = 0
         totleft = 0
-        
-    
+
+
     if apr > 7:
         progress_bar +=5
     elif apr > 5:
@@ -80,25 +61,54 @@ def template():
     if c401K == u'Yes' and ef == u'Yes' and apr < '4':
         progress_bar = (progress_bar - 10) + 20
 
-    msg = MIMEMultipart()
+    header = '<html><head><style>table,th, td, tr{border: 1px solid black;}th {te\
+    xt-align: center;background-color:#862633;color: white;padding: 15px;}td {pad\
+    ding: 15px;}tr:nth-child(even){background-color:#E7C779}</style></head><body>'
+
+    body = '<p>Hi, Thank you for using FinanceNole! Here are your results from your\
+    query!</p><table style ="width:100%"><tr><th><p>Category:</p></th><th><p>Amount\
+    :</p></th><th><p>Average:</p></th></tr><tr><td>Gross Monthly Income:</td><td>\
+    $ $gmi</td><td>$1,200 (<a target="_blank" href="http://ehow.com/info_7934153_a\
+    verage-college-students-income.html">College Student</a>)</td></tr><tr><td>Rent:</td>\
+    <td>$ $rent</td> <td>$650 1 Br/Bath (<a target="_blank" href="http://\
+    housing.fsu.edu">FSU Housing</a>)</td></tr> <tr> <td>Utilities:</td> <td>$ $util</td>\
+    <td>$167.45 (<a target="_blank" href="https://numbeo.com/cost-of-livi\
+    ng/city_result.jsp?country=United+States&city=Tallahassee%2C+FL">Water/Electricity/Garbage</a>)</td> </tr>\
+    <tr> <td>Transport:</td> <td>$ $transport</td>\
+    <td>$15 (<a target="_blank" href="https://washingtonpost.com/news/wonk/wp/2013\
+    /12/13/cars-in-the-u-s-are-more-fuel-efficient-than-ever-heres-how-it-happene\
+    d/">Living within 3 mile radius</a>)</td> </tr> <tr> <td>Insurance:</td> <td>\
+    $ $insurance</td> <td>$204 (<a target="_blank" href="https://coverhound.com">C\
+    ollege Student Insurance</a>)</td> </tr> <tr> <td>Loans:</td> <td>$ $loans</td\
+    > <td>$458.33 (<a target="_blank" href="https://petersons.com/college-search/\
+    college-loan-borrowing-questions.aspx">Petersons</a>)</td> </tr> <tr> <td>Misc:</td>\
+    <td>$ $misc</td> <td>$300 (<a target="_blank" href="http://loweryoursp\
+    ending.com/average-cost-for-food-per-month-for-one-person.html">Groceries</a>\
+    )</td> </tr> <tr> <td>Tuition:</td> <td>$ $tuition</td> <td>$313.5 (<a target=\
+    "_blank" href="http://registrar.fsu.edu/bulletin/undergrad/info/financial_inf\
+    o.htm">FSU Year: $2508.00</a>)</td> </tr> <tr> <td><strong>Total Monthly Expenses:</strong></td>\
+    <td>$ $total </td> <td>$1924.5</td> </tr> <tr> <td><str\
+    ong>Personal Remaining:</strong></td> <td>$ $totleft</td> <td></td> </tr> </table>'
+
+    footer = '</body></html>'
+    html1 = Template(header+body+footer)
+
+    result = html1.safe_substitute(gmi=gmi, rent=rent, util=util, transport=transport \
+                                   , insurance=insurance, loans=loans, misc=misc, tuition=tuition)
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "Link"
     msg['From'] = 'financenole@gmail.com'
     msg['To'] = str(email)
-    msg['Subject'] = 'FSU FinanceNole'
-    message = 'here is the email'
-    msg.attach(MIMEText(message))
-
-    mailserver = smtplib.SMTP('smtp.gmail.com',587)
-    # identify ourselves to smtp gmail client
-    mailserver.ehlo()
-    # secure our email with tls encryption
-    mailserver.starttls()
-    # re-identify ourselves as an encrypted connection
-    mailserver.ehlo()
-    mailserver.login('financenole@gmail.com', 'GoNoles!')
-
-    mailserver.sendmail('financenole@gmail.com', str(email), msg.as_string())
-
-    mailserver.quit()
+    html = str(result)
+    part2 = MIMEText(html, 'html')
+    msg.attach(part2)
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+    mail.ehlo()
+    mail.starttls()
+    mail.login('financenole@gmail.com', 'GoNoles!')
+    mail.sendmail('financenole@gmail.com', str(email), msg.as_string())
+    mail.quit()
 
 
     return render_template('template.html', firstname=firstname, lastname=lastname, email=email,ef=ef, gmi=gmi, c401K=c401K, rent=rent, util=util, transport=transport, insurance=insurance, loans=loans, misc=misc, tuition=tuition, total=total, totleft=totleft, progress_bar=progress_bar, apr=apr)
